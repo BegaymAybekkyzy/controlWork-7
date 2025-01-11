@@ -1,19 +1,19 @@
 import React from 'react';
-import { IProducts } from '../../types';
+import { IPRODUCTS } from '../../types';
 import './ProductBtn.css';
 
 interface Props {
-  product: IProducts;
+  product: IPRODUCTS;
   orderAddition: () => void;
 }
 
-const ProductBtn:React.FC<Props> = ({product, orderAddition}) => {
+const ProductBtn: React.FC<Props> = ({product, orderAddition}) => {
   return (
     <>
       <button onClick={orderAddition}>
         <div><img src={product.image} alt={product.name}/></div>
         <div><p>{product.name}</p>
-          <p>{product.price}KGS</p></div>
+          <p>{product.price} KGS</p></div>
       </button>
     </>
   );

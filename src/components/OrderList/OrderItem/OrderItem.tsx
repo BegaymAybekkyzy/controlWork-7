@@ -1,5 +1,5 @@
 import React from "react";
-import { IProducts } from "../../types";
+import { IProducts } from "../../../types";
 import "./OrderItem.css";
 
 interface Props {

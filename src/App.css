@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+
+.main-block {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  gap: 30px;
+}
+
+.fast-food-menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}

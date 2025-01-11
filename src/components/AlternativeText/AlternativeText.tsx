@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
   text: string;
 }
 
-const AlternativeText: React.FC<Props> = ({text}) => {
+const AlternativeText: React.FC<Props> = ({ text }) => {
   return (
     <div>{text}</div>
-  //   Order is empty! Please add some item
+    //   Order is empty! Please add some item
   );
 };
 

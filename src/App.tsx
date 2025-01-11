@@ -3,7 +3,7 @@ import foodImg from './assets/food.png';
 import drinkImg from './assets/drink.png';
 import { IPRODUCTS, IProducts } from './types';
 import ProductBtn from './components/ProductBtn/ProductBtn';
-import OrderList from './components/OrderList/OrderList';
+import OrderItem from './components/OrderList/OrderItem';
 import OrderPrice from './components/OrderPrice/OrderPrice';
 import AlternativeText from './components/AlternativeText/AlternativeText';
 import './App.css';
@@ -39,7 +39,7 @@ const App = () => {
       copyProducts[index] = copyProduct;
       setProducts(copyProducts);
 
-      setTotalPrice(prevState => prevState + fastFoodProducts[index].price);
+      setTotalPrice((prevState) => prevState + fastFoodProducts[index].price);
     }
   };
 
@@ -51,7 +51,7 @@ const App = () => {
       copyProduct.count--;
       copyProduct.price = copyProduct.price - fastFoodProducts[index].price;
       copyProducts[index] = copyProduct;
-      setTotalPrice(prevState => prevState - fastFoodProducts[index].price);
+      setTotalPrice((prevState) => prevState - fastFoodProducts[index].price);
     }
 
     setProducts(copyProducts);
@@ -59,37 +59,41 @@ const App = () => {
 
   return (
     <>
-      <div>
+      <div className="main-block">
         <div>
           <h2>Order Details</h2>
-          {totalPrice > 0 ?
+          {totalPrice > 0 ? (
             <div>
               {products.map((product, index) => {
                 if (product.count) {
                   return (
-                    <OrderList
+                    <OrderItem
                       key={index}
                       product={product}
                       index={index}
-                      deleteProduct={() => deleteProduct(index)}/>
+                      deleteProduct={() => deleteProduct(index)}
+                    />
                   );
                 }
               })}
-              <OrderPrice totalPrice={totalPrice} />
+              <OrderPrice totalPrice={totalPrice}/>
             </div>
-            : <AlternativeText text='Order is empty! Please add some item'/>
-          }
-
+          ) : (
+            <AlternativeText text="Order is empty! Please add some items"/>
+          )}
         </div>
 
         <div>
           <h2>Add items</h2>
-          {fastFoodProducts.map((productItem, index) => (
-            < ProductBtn
-              key={productItem.name}
-              product={productItem}
-              orderAddition={() => orderAddition(productItem, index)}/>
-          ))}
+          <div className="fast-food-menu">
+            {fastFoodProducts.map((productItem, index) => (
+              <ProductBtn
+                key={productItem.name}
+                product={productItem}
+                orderAddition={() => orderAddition(productItem, index)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>
